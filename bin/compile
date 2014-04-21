@@ -5,14 +5,14 @@ cmake_url="http://www.cmake.org/files/v2.8/cmake-2.8.6.tar.gz"
 cmake_file="cmake-${cmake_version}.tar.gz"
 cmake_tar_dir="cmake-${cmake_version}"
 
-echo "Compiling cmake v${cmake_version}..." | indent
+echo "Compiling cmake v${cmake_version}..."
 #Compile cmake
 curl -s ${cmake_url} > ${cmake_file}
 tar zxf ${cmake_file}
 cd ${cmake_tar_dir}
-./bootstrap --prefix=${target} | indent
-make | indent
-make install | indent
+./bootstrap --prefix=${target}
+make
+make install
 PATH=${target}/bin:$PATH
 cd ..
 
