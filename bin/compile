@@ -1,5 +1,8 @@
 #!/bin/bash
 
+build=$1
+cache=$2
+
 cmake_version="2.8.6"
 cmake_url="http://www.cmake.org/files/v2.8/cmake-2.8.6.tar.gz"
 cmake_file="cmake-${cmake_version}.tar.gz"
@@ -9,16 +12,17 @@ cache_target=${cache}/${io_file}
 build_target=${build}/.local
 target=/app/.local
 
-echo "Compiling cmake v${cmake_version}..."
-#Compile cmake
-curl -s ${cmake_url} > ${cmake_file}
-tar zxf ${cmake_file}
-cd ${cmake_tar_dir}
-./bootstrap --prefix=${target}
-make
-make install
-PATH=${target}/bin:$PATH
-cd ..
+# echo "Compiling cmake v${cmake_version}..."
+# #Compile cmake
+# curl -s ${cmake_url} > ${cmake_file}
+# tar zxf ${cmake_file}
+# cd ${cmake_tar_dir}
+# ./bootstrap --prefix=${target}
+# make
+# make install
+# PATH=${target}/bin:$PATH
+# cd ..
 
 curl -s https://raw.githubusercontent.com/tomwilshere/heroku-buildpack-ruby/master/bin/old_compile.rb > old_compile.rb
-ruby old_compile.rb
+chmod +x old_compile.rb
+./old_compile.rb ${build} ${cache}
