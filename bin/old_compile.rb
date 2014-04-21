@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+puts "in old_compile.rb"
+puts ARGV[0]
+puts ARGV[1]
+puts ARGV[2]
+puts "end of arguments"
 # sync output
 $stdout.sync = true
 
