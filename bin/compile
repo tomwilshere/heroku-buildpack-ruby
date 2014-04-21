@@ -33,6 +33,8 @@ echo ${cache}
 echo ${env}
 
 curl -s ${old_compile_url} > old_compile.rb
-chmod +x old_compile.rb
+echo "file downloaded"
+ls -larth
 cat old_compile.rb
+chmod +x old_compile.rb
 ./old_compile.rb ${build} ${cache} ${env}
