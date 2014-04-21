@@ -1,18 +1,19 @@
-#!/usr/bin/env ruby
+#!/bin/bash
 
-# sync output
-$stdout.sync = true
+cmake_version="2.8.6"
+cmake_url="http://www.cmake.org/files/v2.8/cmake-2.8.6.tar.gz"
+cmake_file="cmake-${cmake_version}.tar.gz"
+cmake_tar_dir="cmake-${cmake_version}"
 
-$:.unshift File.expand_path("../../lib", __FILE__)
-require "language_pack"
-require "language_pack/shell_helpers"
+echo "Compiling cmake v${cmake_version}..." | indent
+#Compile cmake
+curl -s ${cmake_url} > ${cmake_file}
+tar zxf ${cmake_file}
+cd ${cmake_tar_dir}
+./bootstrap --prefix=${target} | indent
+make | indent
+make install | indent
+PATH=${target}/bin:$PATH
+cd ..
 
-LanguagePack::Instrument.trace 'compile', 'app.compile' do
-  if pack = LanguagePack.detect(ARGV[0], ARGV[1])
-    LanguagePack::ShellHelpers.initialize_env(ARGV[2])
-    pack.topic("Compiling #{pack.name}")
-    pack.log("compile") do
-      pack.compile
-    end
-  end
-end
+./old_compile.rb
