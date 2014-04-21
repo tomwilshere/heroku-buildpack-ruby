@@ -20,4 +20,4 @@ make install
 PATH=${target}/bin:$PATH
 cd ..
 
-ruby old_compile.rb
+# ruby old_compile.rb
