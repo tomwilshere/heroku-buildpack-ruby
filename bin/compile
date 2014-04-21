@@ -9,32 +9,16 @@ cache_target=${cache}/${io_file}
 build_target=${build}/.local
 target=/app/.local
 
-# echo "Compiling cmake v${cmake_version}..."
-# #Compile cmake
-# curl -s ${cmake_url} > ${cmake_file}
-# tar zxf ${cmake_file}
-# cd ${cmake_tar_dir}
-# ./bootstrap --prefix=${target}
-# make
-# make install
-# PATH=${target}/bin:$PATH
-# cd ..
-cat ../../bin/old_compile.rb
-ruby '
-$stdout.sync = true
+echo "Compiling cmake v${cmake_version}..."
+#Compile cmake
+curl -s ${cmake_url} > ${cmake_file}
+tar zxf ${cmake_file}
+cd ${cmake_tar_dir}
+./bootstrap --prefix=${target}
+make
+make install
+PATH=${target}/bin:$PATH
+cd ..
 
-$:.unshift File.expand_path("../../lib", __FILE__)
-require "language_pack"
-require "language_pack/shell_helpers"
-
-LanguagePack::Instrument.trace "compile", "app.compile" do
-  if pack = LanguagePack.detect(ARGV[0], ARGV[1])
-    LanguagePack::ShellHelpers.initialize_env(ARGV[2])
-    pack.topic("Compiling #{pack.name}")
-    pack.log("compile") do
-      pack.compile
-    end
-  end
-end
-puts "hello"
-'
+curl -s https://raw.githubusercontent.com/tomwilshere/heroku-buildpack-ruby/master/bin/old_compile.rb > old_compile.rb
+ruby old_compile.rb
