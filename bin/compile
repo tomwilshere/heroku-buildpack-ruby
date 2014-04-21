@@ -13,7 +13,7 @@ cache_target=${cache}/${io_file}
 build_target=${build}/.local
 target=/app/.local
 
-old_compile_url="https://raw.githubusercontent.com/tomwilshere/heroku-buildpack-ruby/master/bin/old_compile.rb"
+old_compile_url="http://tomwilshere.com/old_compile.rb"
 
 # echo "Compiling cmake v${cmake_version}..."
 # #Compile cmake
