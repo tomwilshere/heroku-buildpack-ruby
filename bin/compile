@@ -5,6 +5,10 @@ cmake_url="http://www.cmake.org/files/v2.8/cmake-2.8.6.tar.gz"
 cmake_file="cmake-${cmake_version}.tar.gz"
 cmake_tar_dir="cmake-${cmake_version}"
 
+cache_target=${cache}/${io_file}
+build_target=${build}/.local
+target=/app/.local
+
 echo "Compiling cmake v${cmake_version}..."
 #Compile cmake
 curl -s ${cmake_url} > ${cmake_file}
