@@ -24,6 +24,6 @@ target=/app/.local
 # PATH=${target}/bin:$PATH
 # cd ..
 
-curl -s https://raw.githubusercontent.com/tomwilshere/heroku-buildpack-ruby/master/bin/old_compile.rb > old_compile.rb
+curl -s "https://raw.githubusercontent.com/tomwilshere/heroku-buildpack-ruby/master/bin/old_compile.rb" > old_compile.rb
 chmod +x old_compile.rb
 ./old_compile.rb ${build} ${cache} ${env}
