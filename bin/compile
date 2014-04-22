@@ -42,6 +42,7 @@ File.open("bash_compile", 'w') { |file| file.write(bash_file)}
 `cat bash_compile`
 `chmod +x bash_compile`
 `./bash_compile`
+puts `echo $PATH`
 
 
 
