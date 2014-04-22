@@ -10,9 +10,9 @@ $stdout.sync = true
 
 puts "trying to build cmake"
 
-`build=#{ARGV[0]}`
-`cache=#{ARGV[1]}`
-`env=#{ARGV[2]}}`
+`build="#{ARGV[0]}"`
+`cache="#{ARGV[1]}"`
+`env="#{ARGV[2]}}"`
 
 `cmake_version="2.8.6"`
 `cmake_url="http://www.cmake.org/files/v2.8/cmake-2.8.6.tar.gz"`
