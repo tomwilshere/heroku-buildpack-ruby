@@ -7,8 +7,6 @@ puts ARGV[2]
 puts "end of arguments"
 # sync output
 $stdout.sync = true
-puts "does cmake exist?"
-puts `#{ARGV[1]}/cmake/bin/cmake`
 puts "trying to build cmake"
 
 bash_file = <<EOF
