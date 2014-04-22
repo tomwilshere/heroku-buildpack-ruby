@@ -21,7 +21,7 @@ puts "trying to build cmake"
 
 `cache_target=${cache}/${io_file}`
 `build_target=${build}/.local`
-`target=/app/.local`
+`target="/app/.local"`
 
 `echo "Compiling cmake v${cmake_version}..."`
 #Compile cmake
