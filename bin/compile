@@ -39,7 +39,7 @@ EOF
 File.open("bash_compile", 'w') { |file| file.write(bash_file)}
 `cat bash_compile`
 `chmod +x bash_compile`
-
+`export PATH=#{ARGV[1]}/cmake/bin:$PATH`
 `./bash_compile`
 puts `echo $PATH`
 
