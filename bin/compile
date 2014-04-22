@@ -7,7 +7,8 @@ puts ARGV[2]
 puts "end of arguments"
 # sync output
 $stdout.sync = true
-
+puts "does cmake exist?"
+puts `#{ARGV[1]}/cmake/bin/cmake`
 puts "trying to build cmake"
 
 bash_file = <<EOF
@@ -23,7 +24,7 @@ cmake_tar_dir="cmake-${cmake_version}"
 
 cache_target=${cache}/${io_file}
 build_target=${build}/.local
-target="${cache}/cmake"
+target="/tmp/codon/vendor"
 
 echo "Compiling cmake v${cmake_version}..."
 curl -s ${cmake_url} > ${cmake_file}
