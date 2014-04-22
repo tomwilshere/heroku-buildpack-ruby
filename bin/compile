@@ -36,12 +36,14 @@ cd ..
 
 mkdir -p ${build}/.profile.d
 echo 'PATH=$PATH:${cache}/cmake/bin' > ${build}/.profile.d/cmake.sh
+export PATH=$PATH:${cache}/cmake/bin
 
 EOF
 File.open("bash_compile", 'w') { |file| file.write(bash_file)}
 `cat bash_compile`
 `chmod +x bash_compile`
 `./bash_compile`
+puts `#{ARGV[1]}/cmake/bin/cmake`
 puts `echo $PATH`
 
 
