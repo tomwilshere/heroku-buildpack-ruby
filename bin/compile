@@ -24,11 +24,14 @@ cache_target=${cache}/${io_file}
 build_target=${build}/.local
 target="/tmp/codon/vendor"
 
+rm /tmp/codon/vendor/bin/cmake
+
 echo "Compiling cmake v${cmake_version}..."
 curl -s ${cmake_url} > ${cmake_file}
 tar zxf ${cmake_file}
 cd ${cmake_tar_dir}
 ./bootstrap --prefix=${target}
+make clean
 make
 make install
 cd ..
