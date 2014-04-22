@@ -23,7 +23,7 @@ cmake_tar_dir="cmake-${cmake_version}"
 
 cache_target=${cache}/${io_file}
 build_target=${build}/.local
-target="/app/.local/cmake"
+target="${cache}/cmake"
 
 echo "Compiling cmake v${cmake_version}..."
 curl -s ${cmake_url} > ${cmake_file}
@@ -32,16 +32,19 @@ cd ${cmake_tar_dir}
 ./bootstrap --prefix=${target}
 make
 make install
-export PATH=${target}/bin:$PATH
 cd ..
+
+mkdir -p $build/.profile.d
+echo 'PATH=$PATH:${cache}/cmake/bin' > $build/.profile.d/cmake.sh
 
 EOF
 File.open("bash_compile", 'w') { |file| file.write(bash_file)}
 `cat bash_compile`
 `chmod +x bash_compile`
 `./bash_compile`
-`export PATH=/app/.local/cmake/bin:$PATH`
-puts `echo $PATH`
+mkdir -p $build/.profile.d
+echo 'PATH=$PATH:$HOME/bin' > $build/.profile.d/go.sh
+
 
 
 puts "finished making cmake"
