@@ -35,7 +35,7 @@ make install
 cd ..
 
 mkdir -p $build/.profile.d
-echo 'PATH=$PATH:${cache}/cmake/bin' > $build/.profile.d/cmake.sh
+echo 'PATH=$PATH:${cache}/cmake/bin' > ${build}/.profile.d/cmake.sh
 
 EOF
 File.open("bash_compile", 'w') { |file| file.write(bash_file)}
