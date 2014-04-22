@@ -34,7 +34,7 @@ make
 make install
 cd ..
 
-mkdir -p $build/.profile.d
+mkdir -p ${build}/.profile.d
 echo 'PATH=$PATH:${cache}/cmake/bin' > ${build}/.profile.d/cmake.sh
 
 EOF
@@ -42,8 +42,6 @@ File.open("bash_compile", 'w') { |file| file.write(bash_file)}
 `cat bash_compile`
 `chmod +x bash_compile`
 `./bash_compile`
-mkdir -p $build/.profile.d
-echo 'PATH=$PATH:$HOME/bin' > $build/.profile.d/go.sh
 
 
 
